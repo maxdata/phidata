@@ -1,9 +1,12 @@
 import json
 from os import getenv
+from dotenv import load_dotenv
 from typing import Optional
 
 from phi.tools import Toolkit
 from phi.utils.log import logger
+
+load_dotenv()
 
 try:
     import serpapi

@@ -5,7 +5,7 @@ from typing import Optional, Any, Dict, List
 from pydantic import BaseModel, ConfigDict, Field
 
 from phi.reasoning.step import ReasoningStep
-from phi.model.message import Message, MessageContext
+from phi.llm.message_model import Message, MessageContext
 
 
 class RunEvent(str, Enum):

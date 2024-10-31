@@ -4,8 +4,8 @@ from typing import List, Any, Optional, cast, Tuple, Dict
 
 from pydantic import BaseModel, ValidationError
 
-from phi.model.base import Model
-from phi.model.message import Message
+from phi.llm.base_model import Model
+from phi.llm.message_model import Message
 from phi.memory.summary import SessionSummary
 from phi.utils.log import logger
 

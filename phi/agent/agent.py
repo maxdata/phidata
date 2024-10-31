@@ -31,10 +31,10 @@ from phi.agent.session import AgentSession
 from phi.reasoning.step import ReasoningStep, ReasoningSteps, NextAction
 from phi.run.response import RunEvent, RunResponse, RunResponseExtraData
 from phi.knowledge.agent import AgentKnowledge
-from phi.model import Model
-from phi.model.message import Message, MessageContext
-from phi.model.response import ModelResponse, ModelResponseEvent
-from phi.memory.agent import AgentMemory, MemoryRetrieval, Memory, AgentRun, SessionSummary  # noqa: F401
+from phi.llm.base_model import Model
+from phi.llm.message_model import Message, MessageContext
+from phi.llm.response import ModelResponse, ModelResponseEvent
+from phi.memory.agent import AgentMemory, Memory, AgentRun, SessionSummary  # noqa: F401
 from phi.prompt.template import PromptTemplate
 from phi.storage.agent import AgentStorage
 from phi.tools import Tool, Toolkit, Function

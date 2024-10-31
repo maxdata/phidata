@@ -2,8 +2,8 @@ from typing import List, Iterator, Optional, Dict, Any, Callable, Union
 
 from pydantic import BaseModel, ConfigDict, Field, field_validator, ValidationInfo
 
-from phi.model.message import Message
-from phi.model.response import ModelResponse, ModelResponseEvent
+from phi.llm.message_model import Message
+from phi.llm.response import ModelResponse, ModelResponseEvent
 from phi.tools import Tool, Toolkit
 from phi.tools.function import Function, FunctionCall
 from phi.utils.log import logger

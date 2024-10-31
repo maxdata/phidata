@@ -1,39 +1,27 @@
 from os import getenv
-from typing import Optional, Dict, Any
+from typing import Optional, Dict, Any, List, Iterator
 from phi.utils.log import logger
-from phi.model.openai.like import OpenAILike
+from phi.llm.message import Message
+from phi.llm.chat import OpenAIChat
+from dotenv import load_dotenv
+
+load_dotenv()
 
 try:
     from openai import AzureOpenAI as AzureOpenAIClient
+    from openai.types.chat.chat_completion_chunk import ChatCompletionChunk
 except ImportError:
     logger.error("`azure openai` not installed")
     raise
 
+class OpenAILike(OpenAIChat):
+    name: str = "OpenAILike"
+    model: str = "not-provided"
+    api_key: Optional[str] = "not-provided"
 
 class AzureOpenAIChat(OpenAILike):
-    """
-    Azure OpenAI Chat model
-
-    Args:
-
-        id (str): The model name to use.
-        name (str): The model name to use.
-        provider (str): The provider to use.
-        api_key (Optional[str]): The API key to use.
-        api_version (str): The API version to use.
-        azure_endpoint (Optional[str]): The Azure endpoint to use.
-        azure_deployment (Optional[str]): The Azure deployment to use.
-        base_url (Optional[str]): The base URL to use.
-        azure_ad_token (Optional[str]): The Azure AD token to use.
-        azure_ad_token_provider (Optional[Any]): The Azure AD token provider to use.
-        organization (Optional[str]): The organization to use.
-        openai_client (Optional[AzureOpenAIClient]): The OpenAI client to use.
-    """
-
-    id: str
     name: str = "AzureOpenAIChat"
-    provider: str = "Azure"
-
+    model: str
     api_key: Optional[str] = getenv("AZURE_OPENAI_API_KEY")
     api_version: str = getenv("AZURE_OPENAI_API_VERSION", "2024-02-01")
     azure_endpoint: Optional[str] = getenv("AZURE_OPENAI_ENDPOINT")
@@ -45,13 +33,6 @@ class AzureOpenAIChat(OpenAILike):
     openai_client: Optional[AzureOpenAIClient] = None
 
     def get_client(self) -> AzureOpenAIClient:
-        """
-        Get the OpenAI client.
-
-        Returns:
-            AzureOpenAIClient: The OpenAI client.
-
-        """
         if self.openai_client:
             return self.openai_client
 
@@ -78,3 +59,11 @@ class AzureOpenAIChat(OpenAILike):
             _client_params.update(self.client_params)
 
         return AzureOpenAIClient(**_client_params)
+
+    def invoke_stream(self, messages: List[Message]) -> Iterator[ChatCompletionChunk]:
+        yield from self.get_client().chat.completions.create(
+            model=self.model,
+            messages=[m.to_dict() for m in messages],  # type: ignore
+            stream=True,
+            **self.api_kwargs,
+        )  # type: ignore

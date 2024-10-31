@@ -2,8 +2,8 @@ from typing import List, Any, Optional, cast
 
 from pydantic import BaseModel
 
-from phi.model.base import Model
-from phi.model.message import Message
+from phi.llm.base_model import Model
+from phi.llm.message_model import Message
 from phi.memory.memory import Memory
 from phi.utils.log import logger
 

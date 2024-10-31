@@ -9,7 +9,7 @@ from phi.memory.manager import MemoryManager
 from phi.memory.memory import Memory
 from phi.memory.summary import SessionSummary
 from phi.memory.summarizer import MemorySummarizer
-from phi.model.message import Message
+from phi.llm.message_model import Message
 from phi.run.response import RunResponse
 from phi.utils.log import logger
 
