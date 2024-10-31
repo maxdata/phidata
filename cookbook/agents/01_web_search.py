@@ -2,12 +2,12 @@
 
 from phi.agent import Agent
 from phi.llm.azure_chat_model import AzureOpenAIChat
-from phi.tools.serpapi_tools import SerpApiTools
+from phi.tools.exa import ExaTools
 
 web_agent = Agent(
     name="Web Agent",
     model=AzureOpenAIChat(id="gpt-4o"),
-    tools=[SerpApiTools()],
+    tools=[ExaTools()],
     instructions=["Always include sources"],
     show_tool_calls=True,
     markdown=True,
