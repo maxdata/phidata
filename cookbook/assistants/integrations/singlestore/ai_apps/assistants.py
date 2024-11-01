@@ -8,7 +8,7 @@ from phi.assistant import Assistant
 from phi.llm import LLM
 from phi.llm.groq import Groq
 from phi.llm.ollama import Ollama
-from phi.llm.openai import OpenAIChat
+from phi.llm.azure_chat import AzureOpenAIChat
 from phi.knowledge import AssistantKnowledge
 from phi.embedder.openai import OpenAIEmbedder
 from phi.embedder.ollama import OllamaEmbedder

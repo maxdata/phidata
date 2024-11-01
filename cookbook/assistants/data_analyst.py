@@ -1,10 +1,10 @@
 import json
 
-from phi.llm.openai import OpenAIChat
+from phi.llm.azure_chat_model import AzureOpenAIChat
 from phi.assistant.duckdb import DuckDbAssistant
 
 data_analyst = DuckDbAssistant(
-    llm=OpenAIChat(model="gpt-4o"),
+    llm=AzureOpenAIChat(model="gpt-4o"),
     semantic_model=json.dumps(
         {
             "tables": [

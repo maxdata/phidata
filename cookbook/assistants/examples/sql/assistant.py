@@ -6,7 +6,7 @@ from pathlib import Path
 from phi.assistant import Assistant
 from phi.tools.sql import SQLTools
 from phi.tools.file import FileTools
-from phi.llm.openai import OpenAIChat
+from phi.llm.azure_chat_model import AzureOpenAIChat
 from phi.embedder.openai import OpenAIEmbedder
 from phi.knowledge.json import JSONKnowledgeBase
 from phi.knowledge.text import TextKnowledgeBase

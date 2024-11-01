@@ -8,7 +8,7 @@ from textwrap import dedent
 from datetime import datetime
 
 from phi.assistant import Assistant
-from phi.llm.openai import OpenAIChat
+from phi.llm.azure_chat_model import AzureOpenAIChat
 from phi.tools.exa import ExaTools
 
 cwd = Path(__file__).parent.resolve()
@@ -19,7 +19,7 @@ if not scratch_dir.exists():
 today = datetime.now().strftime("%Y-%m-%d")
 
 assistant = Assistant(
-    llm=OpenAIChat(model="gpt-4o"),
+    llm=AzureOpenAIChat(model="gpt-4o"),
     tools=[ExaTools(start_published_date=today, type="keyword")],
     description="You are a senior NYT researcher writing an article on a topic.",
     instructions=[

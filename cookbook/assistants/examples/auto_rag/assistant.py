@@ -2,7 +2,7 @@ from typing import Optional
 
 from phi.assistant import Assistant
 from phi.knowledge import AssistantKnowledge
-from phi.llm.openai import OpenAIChat
+from phi.llm.azure_chat_model import AzureOpenAIChat
 from phi.tools.duckduckgo import DuckDuckGo
 from phi.embedder.openai import OpenAIEmbedder
 from phi.vectordb.pgvector import PgVector2
@@ -23,7 +23,7 @@ def get_auto_rag_assistant(
         name="auto_rag_assistant",
         run_id=run_id,
         user_id=user_id,
-        llm=OpenAIChat(model=llm_model),
+        llm=AzureOpenAIChat(model=llm_model),
         storage=PgAssistantStorage(table_name="auto_rag_assistant_openai", db_url=db_url),
         knowledge_base=AssistantKnowledge(
             vector_db=PgVector2(

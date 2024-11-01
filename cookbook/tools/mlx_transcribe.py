@@ -19,7 +19,7 @@ Example Usage:
 
 from pathlib import Path
 from phi.agent import Agent
-from phi.model.openai import OpenAIChat
+from phi.llm.azure_chat_model import AzureOpenAIChat
 from phi.tools.mlx_transcribe import MLXTranscribe
 
 # Get audio files from storage/audio directory

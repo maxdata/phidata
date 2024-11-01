@@ -1,7 +1,7 @@
 from phi.assistant import Assistant
-from phi.llm.openai import OpenAIChat
+from phi.llm.azure_chat_model import AzureOpenAIChat
 
-assistant = Assistant(llm=OpenAIChat(model="gpt-4-turbo"))
+assistant = Assistant(llm=AzureOpenAIChat(model="gpt-4-turbo"))
 
 # Single Image
 assistant.print_response(

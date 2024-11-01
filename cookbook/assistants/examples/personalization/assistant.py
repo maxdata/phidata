@@ -9,7 +9,7 @@ from phi.tools.calculator import Calculator
 from phi.tools.duckduckgo import DuckDuckGo
 from phi.tools.yfinance import YFinanceTools
 from phi.tools.file import FileTools
-from phi.llm.openai import OpenAIChat
+from phi.llm.azure_chat_model import AzureOpenAIChat
 from phi.embedder.openai import OpenAIEmbedder
 from phi.assistant.python import PythonAssistant
 from phi.vectordb.pgvector import PgVector2
@@ -79,7 +79,7 @@ def get_personalized_assistant(
         _research_assistant = Assistant(
             name="Research Assistant",
             role="Write a research report on a given topic",
-            llm=OpenAIChat(model=llm_id),
+            llm=AzureOpenAIChat(model=llm_id),
             description="You are a Senior New York Times researcher tasked with writing a cover story research report.",
             instructions=[
                 "For a given topic, use the `search_exa` to get the top 10 search results.",
@@ -130,7 +130,7 @@ def get_personalized_assistant(
         name="personalized_assistant",
         run_id=run_id,
         user_id=user_id,
-        llm=OpenAIChat(model=llm_id),
+        llm=AzureOpenAIChat(model=llm_id),
         # Add personalization to the assistant by creating memories
         create_memories=True,
         # Update memory after each run

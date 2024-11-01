@@ -1,7 +1,7 @@
 import asyncio
 
 from phi.agent import Agent
-from phi.model.openai import OpenAIChat
+from phi.llm.azure_chat_model import AzureOpenAIChat
 from phi.cli.console import console
 
 task = "How many 'r' are in the word 'strawberry'?"

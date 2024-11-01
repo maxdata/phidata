@@ -19,7 +19,7 @@ class MemoryClassifier(BaseModel):
     def update_model(self) -> None:
         if self.model is None:
             try:
-                from phi.model.openai import OpenAIChat
+                from phi.llm.azure_chat_model import AzureOpenAIChat
             except ModuleNotFoundError as e:
                 logger.exception(e)
                 logger.error(
@@ -27,7 +27,7 @@ class MemoryClassifier(BaseModel):
                     "Please provide a `model` or install `openai`."
                 )
                 exit(1)
-            self.model = OpenAIChat()
+            self.model = AzureOpenAIChat()
 
     def get_system_message(self) -> Message:
         # -*- Return a system message for classification

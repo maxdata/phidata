@@ -1,9 +1,9 @@
 from phi.assistant import Assistant
-from phi.llm.openai import OpenAIChat
+from phi.llm.azure_chat_model import AzureOpenAIChat
 from phi.tools.yfinance import YFinanceTools
 
 assistant = Assistant(
-    llm=OpenAIChat(model="gpt-4o"),
+    llm=AzureOpenAIChat(model="gpt-4o"),
     tools=[YFinanceTools(stock_price=True, analyst_recommendations=True, company_info=True, company_news=True)],
     add_chat_history_to_messages=True,
     show_tool_calls=True,

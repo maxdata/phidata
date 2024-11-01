@@ -1,9 +1,9 @@
 from phi.assistant import Assistant
-from phi.llm.openai import OpenAIChat
+from phi.llm.azure_chat_model import AzureOpenAIChat
 from phi.tools.duckduckgo import DuckDuckGo
 
 assistant = Assistant(
-    llm=OpenAIChat(model="gpt-4o"),
+    llm=AzureOpenAIChat(model="gpt-4o"),
     tools=[DuckDuckGo()],
     show_tool_calls=True,
     markdown=True,

@@ -1,7 +1,7 @@
 """Run `pip install duckduckgo-search sqlalchemy pgvector pypdf openai` to install dependencies."""
 
 from phi.agent import Agent
-from phi.model.openai import OpenAIChat
+from phi.llm.azure_chat_model import AzureOpenAIChat
 from phi.knowledge.pdf import PDFUrlKnowledgeBase
 from phi.vectordb.pgvector import PgVector
 

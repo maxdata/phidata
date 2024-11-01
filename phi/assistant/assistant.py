@@ -272,7 +272,7 @@ class Assistant(BaseModel):
     def update_llm(self) -> None:
         if self.llm is None:
             try:
-                from phi.llm.openai import OpenAIChat
+                from phi.llm.azure_chat import AzureOpenAIChat
             except ModuleNotFoundError as e:
                 logger.exception(e)
                 logger.error(

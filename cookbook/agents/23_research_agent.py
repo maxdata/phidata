@@ -3,12 +3,12 @@ pip install openai duckduckgo-search newspaper4k lxml_html_clean phidata
 """
 
 from phi.agent import Agent
-from phi.model.openai import OpenAIChat
+from phi.llm.azure_chat_model import AzureOpenAIChat
 from phi.tools.duckduckgo import DuckDuckGo
 from phi.tools.newspaper4k import Newspaper4k
 
 agent = Agent(
-    model=OpenAIChat(id="gpt-4o"),
+    model=AzureOpenAIChat(id="gpt-4o"),
     tools=[DuckDuckGo(), Newspaper4k()],
     description="You are a senior NYT researcher writing an article on a topic.",
     instructions=[

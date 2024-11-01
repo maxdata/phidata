@@ -12,7 +12,7 @@ from phi.tools.calculator import Calculator
 from phi.tools.duckduckgo import DuckDuckGo
 from phi.tools.yfinance import YFinanceTools
 from phi.tools.file import FileTools
-from phi.llm.openai import OpenAIChat
+from phi.llm.azure_chat import AzureOpenAIChat
 from phi.knowledge import AssistantKnowledge
 from phi.embedder.openai import OpenAIEmbedder
 from phi.assistant.duckdb import DuckDbAssistant

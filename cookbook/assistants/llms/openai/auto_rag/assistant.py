@@ -2,7 +2,7 @@ from typing import Optional
 
 from phi.assistant import Assistant
 from phi.knowledge import AssistantKnowledge
-from phi.llm.openai import OpenAIChat
+from phi.llm.azure_chat import AzureOpenAIChat
 from phi.tools.duckduckgo import DuckDuckGo
 from phi.embedder.openai import OpenAIEmbedder
 from phi.vectordb.pgvector import PgVector2

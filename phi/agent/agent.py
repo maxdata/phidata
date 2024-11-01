@@ -439,7 +439,7 @@ class Agent(BaseModel):
     def update_model(self) -> None:
         if self.model is None:
             try:
-                from phi.model.openai import OpenAIChat
+                from phi.llm.azure_chat_model import AzureOpenAIChat
             except ModuleNotFoundError as e:
                 logger.exception(e)
                 logger.error(
@@ -447,7 +447,7 @@ class Agent(BaseModel):
                     "Please provide a `model` or install `openai`."
                 )
                 exit(1)
-            self.model = OpenAIChat()
+            self.model = AzureOpenAIChat()
 
         # Set response_format if it is not set on the Model
         if self.response_model is not None and self.model.response_format is None:

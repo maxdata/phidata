@@ -36,7 +36,7 @@ Let's start by building a simple agent that can search the web, create a file `w
 
 ```python
 from phi.agent import Agent
-from phi.model.openai import OpenAIChat
+from phi.llm.azure_chat_model import AzureOpenAIChat
 from phi.tools.duckduckgo import DuckDuckGo
 
 web_agent = Agent(
@@ -66,7 +66,7 @@ Lets create another agent that can query financial data, create a file `finance_
 
 ```python
 from phi.agent import Agent
-from phi.model.openai import OpenAIChat
+from phi.llm.azure_chat_model import AzureOpenAIChat
 from phi.tools.yfinance import YFinanceTools
 
 finance_agent = Agent(
@@ -94,7 +94,7 @@ Now lets create a team of agents using the agents above, create a file `agent_te
 
 ```python
 from phi.agent import Agent
-from phi.model.openai import OpenAIChat
+from phi.llm.azure_chat_model import AzureOpenAIChat
 from phi.tools.duckduckgo import DuckDuckGo
 from phi.tools.yfinance import YFinanceTools
 
@@ -140,7 +140,7 @@ Reasoning is an experimental feature that helps agents work through a problem st
 
 ```python
 from phi.agent import Agent
-from phi.model.openai import OpenAIChat
+from phi.llm.azure_chat_model import AzureOpenAIChat
 
 task = (
     "Three missionaries and three cannibals need to cross a river. "
@@ -175,7 +175,7 @@ This saves tokens and improves response quality. Create a file `rag_agent.py`
 
 ```python
 from phi.agent import Agent
-from phi.model.openai import OpenAIChat
+from phi.llm.azure_chat_model import AzureOpenAIChat
 from phi.embedder.openai import OpenAIEmbedder
 from phi.knowledge.pdf import PDFUrlKnowledgeBase
 from phi.vectordb.lancedb import LanceDb, SearchType
@@ -223,7 +223,7 @@ Phidata provides a beautiful UI for interacting with your agents. Let's take it 
 
 ```python
 from phi.agent import Agent
-from phi.model.openai import OpenAIChat
+from phi.llm.azure_chat_model import AzureOpenAIChat
 from phi.storage.agent.sqlite import SqlAgentStorage
 from phi.tools.duckduckgo import DuckDuckGo
 from phi.tools.yfinance import YFinanceTools
@@ -348,7 +348,7 @@ The `PythonAgent` can achieve tasks by writing and running python code.
 
 ```python
 from phi.agent.python import PythonAgent
-from phi.model.openai import OpenAIChat
+from phi.llm.azure_chat_model import AzureOpenAIChat
 from phi.file.local.csv import CsvFile
 
 python_agent = PythonAgent(
@@ -387,7 +387,7 @@ The `DuckDbAgent` can perform data analysis using SQL.
 
 ```python
 import json
-from phi.model.openai import OpenAIChat
+from phi.llm.azure_chat_model import AzureOpenAIChat
 from phi.agent.duckdb import DuckDbAgent
 
 data_analyst = DuckDbAgent(
@@ -439,7 +439,7 @@ Let's create a Movie Agent to write a `MovieScript` for us, create a file `struc
 from typing import List
 from pydantic import BaseModel, Field
 from phi.agent import Agent
-from phi.model.openai import OpenAIChat
+from phi.llm.azure_chat_model import AzureOpenAIChat
 
 # Define a Pydantic model to enforce the structure of the output
 class MovieScript(BaseModel):

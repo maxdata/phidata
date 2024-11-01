@@ -1,12 +1,12 @@
 from textwrap import dedent
 
 from phi.assistant import Assistant
-from phi.llm.openai import OpenAIChat
+from phi.llm.azure_chat_model import AzureOpenAIChat
 from phi.tools.exa import ExaTools
 from phi.tools.firecrawl import FirecrawlTools
 
 assistant = Assistant(
-    llm=OpenAIChat(model="gpt-4o"),
+    llm=AzureOpenAIChat(model="gpt-4o"),
     tools=[ExaTools(type="keyword"), FirecrawlTools()],
     description="You are a venture capitalist at Redpoint Ventures writing a memo about investing in a company.",
     instructions=[

@@ -1,5 +1,5 @@
 from phi.agent import Agent, RunResponse  # noqa
-from phi.model.openai import OpenAIChat
+from phi.llm.azure_chat_model import AzureOpenAIChat
 
 agent = Agent(model=OpenAIChat(id="gpt-4o"), markdown=True)
 

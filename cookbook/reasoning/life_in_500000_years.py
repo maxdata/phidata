@@ -1,5 +1,5 @@
 from phi.agent import Agent
-from phi.model.openai import OpenAIChat
+from phi.llm.azure_chat_model import AzureOpenAIChat
 
 task = "Write a short story about life in 500000 years"
 

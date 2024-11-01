@@ -12,7 +12,7 @@ from rich.panel import Panel
 from rich.json import JSON
 
 from phi.agent import Agent
-from phi.model.openai import OpenAIChat
+from phi.llm.azure_chat_model import AzureOpenAIChat
 from phi.storage.agent.sqlite import SqlAgentStorage
 
 

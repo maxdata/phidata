@@ -5,7 +5,7 @@ import os
 import json
 
 from phi.assistant import Assistant
-from phi.llm.openai import OpenAIChat
+from phi.llm.azure_chat_model import AzureOpenAIChat
 
 # Load the CLIP model
 device = "cuda" if torch.cuda.is_available() else "cpu"
@@ -56,7 +56,7 @@ def search(query_text, top_k=5):
 
 
 assistant = Assistant(
-    llm=OpenAIChat(model="gpt-4o", max_tokens=500, temperature=0.3),
+    llm=AzureOpenAIChat(model="gpt-4o", max_tokens=500, temperature=0.3),
     tools=[search],
     instructions=[
         "Query the Pinecone index for images related to the given text. Which image best matches what the user is looking for? Provide the filename and score."

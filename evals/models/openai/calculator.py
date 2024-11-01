@@ -2,7 +2,7 @@ from typing import Optional
 
 from phi.agent import Agent
 from phi.eval import Eval, EvalResult
-from phi.model.openai import OpenAIChat
+from phi.llm.azure_chat_model import AzureOpenAIChat
 from phi.tools.calculator import Calculator
 
 

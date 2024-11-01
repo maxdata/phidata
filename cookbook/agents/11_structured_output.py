@@ -10,7 +10,7 @@ from rich.text import Text
 from pydantic import BaseModel, Field
 
 from phi.agent import Agent, RunResponse
-from phi.model.openai import OpenAIChat
+from phi.llm.azure_chat_model import AzureOpenAIChat
 
 console = Console()
 
@@ -29,14 +29,14 @@ class MovieScript(BaseModel):
 
 # Agent that uses JSON mode
 json_mode_agent = Agent(
-    model=OpenAIChat(id="gpt-4o"),
+    model=AzureOpenAIChat(id="gpt-4o"),
     description="You write movie scripts.",
     response_model=MovieScript,
 )
 
 # Agent that uses structured outputs
 structured_output_agent = Agent(
-    model=OpenAIChat(id="gpt-4o-2024-08-06"),
+    model=AzureOpenAIChat(id="gpt-4o-2024-08-06"),
     description="You write movie scripts.",
     response_model=MovieScript,
     structured_outputs=True,

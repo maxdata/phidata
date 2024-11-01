@@ -1,5 +1,5 @@
 from phi.agent import Agent
-from phi.model.openai import OpenAIChat
+from phi.llm.azure_chat_model import AzureOpenAIChat
 
 task = (
     "Discuss the concept of 'The Ship of Theseus' and its implications on the notions of identity and change. "

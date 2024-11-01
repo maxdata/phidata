@@ -27,7 +27,7 @@ class MemoryManager(BaseModel):
     def update_model(self) -> None:
         if self.model is None:
             try:
-                from phi.model.openai import OpenAIChat
+                from phi.llm.azure_chat_model import AzureOpenAIChat
             except ModuleNotFoundError as e:
                 logger.exception(e)
                 logger.error(
@@ -35,7 +35,7 @@ class MemoryManager(BaseModel):
                     "Please provide a `model` or install `openai`."
                 )
                 exit(1)
-            self.model = OpenAIChat()
+            self.model = AzureOpenAIChat()
 
         self.model.add_tool(self.add_memory)
         self.model.add_tool(self.update_memory)

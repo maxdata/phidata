@@ -2,7 +2,7 @@ from textwrap import dedent
 
 from phi.assistant import Assistant
 from phi.embedder.openai import OpenAIEmbedder
-from phi.llm.openai import OpenAIChat
+from phi.llm.azure_chat_model import AzureOpenAIChat
 from phi.memory import AssistantMemory
 from phi.memory.db.postgres import PgMemoryDb
 from phi.storage.assistant.postgres import PgAssistantStorage
@@ -14,7 +14,7 @@ db_url = "postgresql+psycopg://ai:ai@localhost:5532/ai"
 
 assistant = Assistant(
     # LLM to use for the Assistant
-    llm=OpenAIChat(model="gpt-4o"),
+    llm=AzureOpenAIChat(model="gpt-4o"),
     # Add personalization to the assistant by creating memories
     create_memories=True,
     # Store the memories in a database

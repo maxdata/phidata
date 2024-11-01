@@ -1,11 +1,11 @@
 from typing import Iterator
 from rich.pretty import pprint
 from phi.agent import Agent, RunResponse
-from phi.model.openai import OpenAIChat
+from phi.llm.azure_chat_model import AzureOpenAIChat
 from phi.tools.yfinance import YFinanceTools
 
 agent = Agent(
-    model=OpenAIChat(id="gpt-4o"),
+    model=AzureOpenAIChat(id="gpt-4o"),
     tools=[YFinanceTools(stock_price=True)],
     markdown=True,
     show_tool_calls=True,

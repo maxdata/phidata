@@ -1,5 +1,5 @@
 from phi.assistant import Assistant
-from phi.llm.openai import OpenAIChat
+from phi.llm.azure_chat import AzureOpenAIChat
 
 assistant = Assistant(llm=OpenAIChat(model="gpt-4-turbo"), debug_mode=True, format_messages=False)
 assistant.print_response(

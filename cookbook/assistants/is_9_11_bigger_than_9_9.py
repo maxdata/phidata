@@ -1,9 +1,9 @@
 from phi.assistant import Assistant
-from phi.llm.openai import OpenAIChat
+from phi.llm.azure_chat_model import AzureOpenAIChat
 from phi.tools.calculator import Calculator
 
 assistant = Assistant(
-    llm=OpenAIChat(model="gpt-4o"),
+    llm=AzureOpenAIChat(model="gpt-4o"),
     tools=[Calculator(add=True, subtract=True, multiply=True, divide=True)],
     instructions=["Use the calculator tool for comparisons."],
     show_tool_calls=True,

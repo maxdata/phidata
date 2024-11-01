@@ -1,9 +1,9 @@
 from phi.agent import Agent
-from phi.model.openai import OpenAIChat
+from phi.llm.azure_chat_model import AzureOpenAIChat
 from phi.tools.calculator import Calculator
 
 agent = Agent(
-    model=OpenAIChat(id="gpt-4o"),
+    model=AzureOpenAIChat(id="gpt-4o"),
     # what is input parameter for calculator tool?
     # TODO: not sure how it works
     tools=[Calculator(add=True, subtract=True, multiply=True, divide=True)],

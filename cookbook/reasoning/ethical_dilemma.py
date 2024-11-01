@@ -1,5 +1,5 @@
 from phi.agent import Agent
-from phi.model.openai import OpenAIChat
+from phi.llm.azure_chat_model import AzureOpenAIChat
 
 task = (
     "You are a train conductor faced with an emergency: the brakes have failed, and the train is heading towards "

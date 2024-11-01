@@ -1,5 +1,5 @@
 from phi.assistant import Assistant
-from phi.llm.openai import OpenAIChat
+from phi.llm.azure_chat import AzureOpenAIChat
 from phi.tools.duckduckgo import DuckDuckGo
 
 

@@ -2,7 +2,7 @@
 
 from typing import Iterator  # noqa
 from phi.agent import Agent, RunResponse  # noqa
-from phi.model.openai import OpenAIChat
+from phi.llm.azure_chat_model import AzureOpenAIChat
 from phi.tools.yfinance import YFinanceTools
 
 agent = Agent(

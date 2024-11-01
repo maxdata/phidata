@@ -66,7 +66,7 @@ class Eval(BaseModel):
             return self.accuracy_evaluator
 
         try:
-            from phi.model.openai import OpenAIChat
+            from phi.llm.azure_chat_model import AzureOpenAIChat
         except ImportError as e:
             logger.exception(e)
             logger.error(

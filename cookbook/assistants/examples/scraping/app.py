@@ -1,10 +1,12 @@
 from phi.assistant import Assistant
-from phi.llm.openai import OpenAIChat
+from phi.llm.azure_chat_model import AzureOpenAIChat
 from phi.tools.jina_tools import JinaReaderTools
 
 # Create an Assistant with JinaReaderTools
 assistant = Assistant(
-    llm=OpenAIChat(model="gpt-3.5-turbo"), tools=[JinaReaderTools(max_content_length=8000)], show_tool_calls=True
+    llm=AzureOpenAIChat(model="gpt-3.5-turbo"),
+    tools=[JinaReaderTools(max_content_length=8000)],
+    show_tool_calls=True,
 )
 
 # Use the assistant to read a webpage

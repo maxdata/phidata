@@ -4,7 +4,7 @@ from textwrap import dedent
 from datetime import datetime
 
 from phi.agent import Agent
-from phi.model.openai import OpenAIChat
+from phi.llm.azure_chat_model import AzureOpenAIChat
 from phi.playground import Playground, serve_playground_app
 from phi.storage.agent.sqlite import SqlAgentStorage
 from phi.tools.dalle import Dalle

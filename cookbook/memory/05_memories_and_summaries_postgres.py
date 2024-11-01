@@ -8,7 +8,7 @@ Steps:
 from rich.pretty import pprint
 
 from phi.agent import Agent, AgentMemory
-from phi.model.openai import OpenAIChat
+from phi.llm.azure_chat_model import AzureOpenAIChat
 from phi.memory.db.postgres import PgMemoryDb
 from phi.storage.agent.postgres import PgAgentStorage
 

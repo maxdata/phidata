@@ -1,9 +1,9 @@
 from phi.agent import Agent
-from phi.model.openai import OpenAIChat
+from phi.llm.chat import AzureOpenAIChat
 from phi.tools.dalle import Dalle
 
 agent = Agent(
-    model=OpenAIChat(id="gpt-4o"),
+    model=AzureOpenAIChat(id="gpt-4o"),
     tools=[Dalle()],
     markdown=True,
     debug_mode=True,

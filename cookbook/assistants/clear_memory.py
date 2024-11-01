@@ -1,8 +1,8 @@
 from phi.assistant import Assistant
-from phi.llm.openai import OpenAIChat
+from phi.llm.azure_chat_model import AzureOpenAIChat
 from phi.utils.log import logger
 
-assistant = Assistant(llm=OpenAIChat(model="gpt-4o"))
+assistant = Assistant(llm=AzureOpenAIChat(model="gpt-4o"))
 # -*- Print a response to the cli
 assistant.print_response("Share a 1 line joke")
 

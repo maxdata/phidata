@@ -4,7 +4,7 @@ from textwrap import dedent
 from datetime import datetime
 
 from phi.agent import Agent
-from phi.model.openai import OpenAIChat
+from phi.llm.azure_chat_model import AzureOpenAIChat
 from phi.tools.exa import ExaTools
 from phi.tools.yfinance import YFinanceTools
 from phi.storage.agent.postgres import PgAgentStorage

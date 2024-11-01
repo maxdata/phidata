@@ -1,7 +1,7 @@
 from pathlib import Path
 
 from phi.assistant.python import PythonAssistant
-from phi.llm.openai import OpenAIChat
+from phi.llm.azure_chat_model import AzureOpenAIChat
 from phi.file.local.csv import CsvFile
 
 cwd = Path(__file__).parent.resolve()
@@ -10,7 +10,7 @@ if not scratch_dir.exists():
     scratch_dir.mkdir(exist_ok=True, parents=True)
 
 python_assistant = PythonAssistant(
-    llm=OpenAIChat(model="gpt-4o"),
+    llm=AzureOpenAIChat(model="gpt-4o"),
     base_dir=scratch_dir,
     files=[
         CsvFile(

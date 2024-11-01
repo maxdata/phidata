@@ -2,7 +2,7 @@ from typing import List
 from pydantic import BaseModel, Field
 from rich.pretty import pprint
 from phi.assistant import Assistant
-from phi.llm.openai import OpenAIChat
+from phi.llm.azure_chat import AzureOpenAIChat
 
 
 class MovieScript(BaseModel):
