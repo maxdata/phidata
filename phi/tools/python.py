@@ -70,6 +70,8 @@ class PythonTools(Toolkit):
             if file_path.exists() and not overwrite:
                 return f"File {file_name} already exists"
             file_path.write_text(code)
+            print(f"file_path: {file_path}")
+            print(f"code: {code}")
             logger.info(f"Saved: {file_path}")
             logger.info(f"Running {file_path}")
             globals_after_run = runpy.run_path(str(file_path), init_globals=self.safe_globals, run_name="__main__")

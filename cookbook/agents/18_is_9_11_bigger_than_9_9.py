@@ -4,6 +4,8 @@ from phi.tools.calculator import Calculator
 
 agent = Agent(
     model=OpenAIChat(id="gpt-4o"),
+    # what is input parameter for calculator tool?
+    # TODO: not sure how it works
     tools=[Calculator(add=True, subtract=True, multiply=True, divide=True)],
     instructions=["Use the calculator tool for comparisons."],
     show_tool_calls=True,
