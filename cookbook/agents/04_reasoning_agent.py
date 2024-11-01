@@ -1,12 +1,20 @@
 from phi.agent import Agent
-from phi.model.openai import OpenAIChat
+from phi.llm.azure_chat_model import AzureOpenAIChat
 
 task = (
-    "Three missionaries and three cannibals need to cross a river. "
-    "They have a boat that can carry up to two people at a time. "
-    "If, at any time, the cannibals outnumber the missionaries on either side of the river, the cannibals will eat the missionaries. "
-    "How can all six people get across the river safely? Provide a step-by-step solution and show the solutions as an ascii diagram"
+    "I have six candidates in triple backquotes\n"
+    "```\n"
+    "name: Ming; bill-rate: $49.50 Per Hour; available-date: 11/18/2024;\n"
+    "name: Li; bill-rate: $50.00 Per Hour; available-date: 10/21/2024;\n"
+    "name: Xia; bill-rate: $58.00 Per Hour; available-date: 11/04/2024;\n"
+    "name: Wei; bill-rate: $55.00 Per Hour; available-date: 10/21/2024;\n"
+    "name: Feng; bill-rate: $53.00 Per Hour; available-date: 11/18/2024;\n"
+    "name: Zhao; bill-rate: $50.00 Per Hour; available-date: 11/11/2024;\n"
+    "```\n"
+    "Show me all candidates with Bill Rate less than $55."
 )
 
-reasoning_agent = Agent(model=OpenAIChat(id="gpt-4o"), reasoning=True, markdown=True, structured_outputs=True)
+# Ethan Doe; bill-rate: $53.00 Per Hour missed
+
+reasoning_agent = Agent(model=AzureOpenAIChat(id="gpt-4o"), reasoning=True, markdown=True, structured_outputs=True, debug_mode=True)
 reasoning_agent.print_response(task, stream=True, show_full_reasoning=True)
