@@ -1,6 +1,6 @@
 from phi.agent.agent import (
     Agent,
-    AgentKnowledge,
+    # AgentKnowledge,
     AgentMemory,
     AgentSession,
     AgentStorage,

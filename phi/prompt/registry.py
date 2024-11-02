@@ -1,13 +1,13 @@
 from typing import List, Dict, Optional
 
-from phi.api.prompt import sync_prompt_registry_api, sync_prompt_template_api
-from phi.api.schemas.prompt import (
-    PromptRegistrySync,
-    PromptTemplatesSync,
-    PromptTemplateSync,
-    PromptRegistrySchema,
-    PromptTemplateSchema,
-)
+# from phi.api.prompt import sync_prompt_registry_api, sync_prompt_template_api
+# from phi.api.schemas.prompt import (
+#     PromptRegistrySync,
+#     PromptTemplatesSync,
+#     PromptTemplateSync,
+#     PromptRegistrySchema,
+#     PromptTemplateSchema,
+# )
 from phi.prompt.template import PromptTemplate
 from phi.prompt.exceptions import PromptUpdateException, PromptNotFoundException
 from phi.utils.log import logger

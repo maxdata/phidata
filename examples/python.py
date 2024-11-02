@@ -31,6 +31,7 @@ python_agent.print_response(
     name: Zhao; bill-rate: $50.00 Per Hour; available-date: 11/11/2024;
     
     Show me all candidates with Bill Rate less than $55.
+    Use SQL-like thinking to analyze the data step by step.
     """
 )
 

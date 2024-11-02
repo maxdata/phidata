@@ -26,11 +26,11 @@ from typing import (
 
 from pydantic import BaseModel, ConfigDict, field_validator, Field, ValidationError
 
-from phi.document import Document
+# from phi.document import Document
 from phi.agent.session import AgentSession
 from phi.reasoning.step import ReasoningStep, ReasoningSteps, NextAction
 from phi.run.response import RunEvent, RunResponse, RunResponseExtraData
-from phi.knowledge.agent import AgentKnowledge
+# from phi.knowledge.agent import AgentKnowledge
 from phi.llm.base_model import Model
 from phi.llm.message_model import Message, MessageContext
 from phi.llm.response import ModelResponse, ModelResponseEvent
@@ -79,7 +79,7 @@ class Agent(BaseModel):
     num_history_responses: int = 3
 
     # -*- Agent Knowledge
-    knowledge: Optional[AgentKnowledge] = Field(None, alias="knowledge_base")
+    # knowledge: Optional[AgentKnowledge] = Field(None, alias="knowledge_base")
     # Enable RAG by adding context from AgentKnowledge to the user prompt.
     add_context: bool = False
     # Function to get context to add to the user_message
@@ -423,11 +423,11 @@ class Agent(BaseModel):
             tools.append(self.update_memory)
 
         # Add tools for accessing knowledge
-        if self.knowledge is not None:
-            if self.search_knowledge:
-                tools.append(self.search_knowledge_base)
-            if self.update_knowledge:
-                tools.append(self.add_to_knowledge)
+        # if self.knowledge is not None:
+        #     if self.search_knowledge:
+        #         tools.append(self.search_knowledge_base)
+        #     if self.update_knowledge:
+        #         tools.append(self.add_to_knowledge)
 
         # Add transfer tools
         if self.team is not None and len(self.team) > 0:
@@ -1748,9 +1748,6 @@ class Agent(BaseModel):
         elif messages is not None:
             self.run_input = [m.to_dict() if isinstance(m, Message) else m for m in messages]
 
-        # Log Agent Run
-        self.log_agent_run()
-
         logger.debug(f"*********** Agent Run End: {self.run_response.run_id} ***********")
         if stream_intermediate_steps:
             yield RunResponse(
@@ -2106,9 +2103,6 @@ class Agent(BaseModel):
                 self.run_input = message
         elif messages is not None:
             self.run_input = [m.to_dict() if isinstance(m, Message) else m for m in messages]
-
-        # Log Agent Run
-        await self.alog_agent_run()
 
         logger.debug(f"*********** Async Agent Run End: {self.run_response.run_id} ***********")
         if stream_intermediate_steps:
@@ -2485,51 +2479,7 @@ class Agent(BaseModel):
             )
 
         return run_data
-
-    def log_agent_run(self) -> None:
-        if not (self.telemetry or self.monitoring):
-            return
-
-        from phi.api.agent import create_agent_run, AgentRunCreate
-
-        try:
-            run_data = self._create_run_data()
-            agent_session: AgentSession = self._agent_session or self.get_agent_session()
-
-            create_agent_run(
-                run=AgentRunCreate(
-                    run_id=self.run_id,
-                    run_data=run_data,
-                    session_id=agent_session.session_id,
-                    agent_data=agent_session.monitoring_data() if self.monitoring else agent_session.telemetry_data(),
-                ),
-                monitor=self.monitoring,
-            )
-        except Exception as e:
-            logger.debug(f"Could not create agent event: {e}")
-
-    async def alog_agent_run(self) -> None:
-        if not (self.telemetry or self.monitoring):
-            return
-
-        from phi.api.agent import acreate_agent_run, AgentRunCreate
-
-        try:
-            run_data = self._create_run_data()
-            agent_session: AgentSession = self._agent_session or self.get_agent_session()
-
-            await acreate_agent_run(
-                run=AgentRunCreate(
-                    run_id=self.run_id,
-                    run_data=run_data,
-                    session_id=agent_session.session_id,
-                    agent_data=agent_session.monitoring_data() if self.monitoring else agent_session.telemetry_data(),
-                ),
-                monitor=self.monitoring,
-            )
-        except Exception as e:
-            logger.debug(f"Could not create agent event: {e}")
-
+    
     ###########################################################################
     # Print Response
     ###########################################################################

@@ -10,9 +10,14 @@ task = """I have six candidates in triple backquotes
     name: Zhao; bill-rate: $50.00 Per Hour; available-date: 11/11/2024;
     
     Show me all candidates with Bill Rate less than $55.
+    Use SQL-like thinking to analyze the data step by step.
     """
 
 # Ethan Doe; bill-rate: $53.00 Per Hour missed
 
-reasoning_agent = Agent(model=AzureOpenAIChat(id="gpt-4o"), reasoning=True, markdown=True, structured_outputs=True, debug_mode=True)
+reasoning_agent = Agent(model=AzureOpenAIChat(id="gpt-4o"), 
+                        reasoning=False, 
+                        markdown=True, 
+                        structured_outputs=True, 
+                        debug_mode=True)
 reasoning_agent.print_response(task, stream=True, show_full_reasoning=True)
